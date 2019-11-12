@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/study"/>
+    <filter root="/apps/sling" />
+    <filter root="/apps/msm/study_blueprint" mode="merge"/>
+</workspaceFilter>
