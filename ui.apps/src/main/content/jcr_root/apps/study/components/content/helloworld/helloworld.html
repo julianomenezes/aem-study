@@ -13,9 +13,19 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
+
+<div>
+    <p>Usando o Resource IMAGE>>></p>
+    <div data-sly-resource="${ @ path='/apps/study/components/content/image'}"> </div>
+
+<p>Usando o Include  IMAGE>>></p>
+    <div data-sly-include="${ @ path='/apps/study/components/content/image'}"></div>
+</div>
+
 <p data-sly-test="${properties.text}">Text property: ${properties.text}</p>
 
 <pre data-sly-use.hello="com.aem.study.core.models.HelloWorldModel">
-HelloWorldModel says:
+HelloWorldModel says test:
 ${hello.message}
 </pre>
+

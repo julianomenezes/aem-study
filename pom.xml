@@ -223,6 +223,13 @@
                     <version>1.0.3</version>
                     <configuration>
                         <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+                        <subPackages>
+                            <subPackage>
+                                <groupId>com.adobe.cq</groupId>
+                                <artifactId>core.wcm.components.all</artifactId>
+                                <filter>true</filter>
+                            </subPackage>
+                        </subPackages>
                     </configuration>
                 </plugin>
                 <!-- Content Package Plugin -->
@@ -593,6 +600,12 @@
             <dependency>
                 <groupId>com.adobe.cq</groupId>
                 <artifactId>core.wcm.components.examples</artifactId>
+                <type>zip</type>
+                <version>${core.wcm.components.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.adobe.cq</groupId>
+                <artifactId>core.wcm.components.all</artifactId>
                 <type>zip</type>
                 <version>${core.wcm.components.version}</version>
             </dependency>

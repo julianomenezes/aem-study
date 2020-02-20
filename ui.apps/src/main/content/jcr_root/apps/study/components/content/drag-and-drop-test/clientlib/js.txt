@@ -1,0 +1,3 @@
+#base=js
+
+drag-and-drop-component.js
