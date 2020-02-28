@@ -3,6 +3,8 @@
 //
 // constructor() {
        console.log("DRAG AND DROP TESTE");
+
+       //test();
 // }
 //}
 
