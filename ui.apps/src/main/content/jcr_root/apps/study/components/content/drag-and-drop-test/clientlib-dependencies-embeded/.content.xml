@@ -2,9 +2,7 @@
 <jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0"
           xmlns:jcr="http://www.jcp.org/jcr/1.0"
           jcr:primaryType="cq:ClientLibraryFolder"
-          categories="[aem-study.drag-drop-dependencies]"
-          embed="[aem-study.drag-drop-dependencies-embeded]"
-          dependencies="[aem-study.drag-drop-dependencies-dependencies]"
+          categories="[aem-study.drag-drop-dependencies-embeded]"
           allowProxy="{Boolean}true"/>
 
 

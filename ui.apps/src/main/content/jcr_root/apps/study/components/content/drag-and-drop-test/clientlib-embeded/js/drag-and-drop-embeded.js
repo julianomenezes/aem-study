@@ -1,6 +1,3 @@
 
-console.log("DRAG AND DROP drag-and-drop-embeded EMBEDED");
+console.log("EMBEDED LEVEL ONE");
 
-function test(){
-    console.log("teste>>>> ");
-}
