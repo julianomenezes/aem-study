@@ -46,23 +46,27 @@ import java.io.IOException;
 @Component(service=Servlet.class,
         property={
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.resourceSuperType=" + "study/components/structure/page",
+                "sling.servlet.resourceSuperType=" + "core/wcm/components/page/v2/page",
                 "sling.servlet.resourceTypes="+ "study/components/structure/page-test",
                 "sling.servlet.paths.strict="+"true",
                 "sling.servlet.extensions=" + "txt",
                 "sling.servlet.selectors="+ "tab"
+
+
         })
 
 @ServiceDescription("Simple Demo Servlet")
-public class SimpleServlet extends SlingAllMethodsServlet {
+public class SimpleSuperTypeServlet extends SlingSafeMethodsServlet {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1000L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
         final Resource resource = req.getResource();
         resp.setContentType("text/plain");
-        resp.getWriter().write("Type convencional Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
+        resp.getWriter().write("SUPER TYPE Title Extendeu = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
+
+        System.out.println("PASSOU PELO SUPER TYPE Extendeu" );
     }
 }

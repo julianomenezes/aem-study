@@ -15,7 +15,6 @@
  */
 package com.aem.study.core.servlets;
 
-import com.day.cq.commons.jcr.JcrConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
@@ -46,23 +45,23 @@ import java.io.IOException;
 @Component(service=Servlet.class,
         property={
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.resourceSuperType=" + "study/components/structure/page",
-                "sling.servlet.resourceTypes="+ "study/components/structure/page-test",
-                "sling.servlet.paths.strict="+"true",
-                "sling.servlet.extensions=" + "txt",
-                "sling.servlet.selectors="+ "tab"
+                "sling.servlet.paths=" + "/bin/prefix",
+                "sling.servlet.prefix=" + "testprefix"
+
+
         })
 
-@ServiceDescription("Simple Demo Servlet")
-public class SimpleServlet extends SlingAllMethodsServlet {
 
-    private static final long serialVersionUID = 1L;
+@ServiceDescription("Simple Demo Servlet")
+public class PrefixServlet extends SlingSafeMethodsServlet {
+
+    private static final long serialVersionUID = 1000L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
         final Resource resource = req.getResource();
         resp.setContentType("text/plain");
-        resp.getWriter().write("Type convencional Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
+        resp.getWriter().write("PREFIX 2");
     }
 }

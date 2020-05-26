@@ -15,6 +15,7 @@
  */
 package com.aem.study.core.servlets;
 
+import com.aem.study.common.servicelayer.ServiceTest;
 import com.day.cq.commons.jcr.JcrConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
@@ -22,12 +23,18 @@ import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 
+import javax.inject.Inject;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import java.io.IOException;
+
+import com.aem.study.common.servicelayer.ServiceTest;
 
 /**
  * Servlet that writes some sample content into the response. It is mounted for
@@ -42,27 +49,36 @@ import java.io.IOException;
                    "sling.servlet.extensions=" + "txt"
            })*/
 
+/*
 
-@Component(service=Servlet.class,
+"sling.servlet.paths.strict =" + "true",
+                "sling.servlet.selectors =" + "[ \".EMPTY.\" ]",
+                "sling.servlet.extensions =" + "[\"html\", \"txt\", \"json\" ]"
+ */
+@Component(
+        service=Servlet.class,
         property={
                 "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.resourceSuperType=" + "study/components/structure/page",
-                "sling.servlet.resourceTypes="+ "study/components/structure/page-test",
-                "sling.servlet.paths.strict="+"true",
-                "sling.servlet.extensions=" + "txt",
-                "sling.servlet.selectors="+ "tab"
+                "sling.servlet.paths=" + "/bin/test"
+
         })
 
+
 @ServiceDescription("Simple Demo Servlet")
-public class SimpleServlet extends SlingAllMethodsServlet {
+public class PathServlet extends SlingAllMethodsServlet {
 
     private static final long serialVersionUID = 1L;
+
+    @Reference
+    private ServiceTest serviceTest;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
         final Resource resource = req.getResource();
         resp.setContentType("text/plain");
-        resp.getWriter().write("Type convencional Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
+        resp.getWriter().write("PATH HIT STRICK serviceTest>> " + serviceTest);
+        //resp.getWriter().write("PATH SERVLET  " );
+        resp.getWriter().write("PATH HIT STRICK >> " + serviceTest.calculateValue(12,2));
     }
 }

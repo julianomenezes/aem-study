@@ -23,11 +23,24 @@
         <version>1.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>aem-study.core</artifactId>
-    <name>AEM Study - Core</name>
-    <description>Core bundle for AEM Study</description>
+    <artifactId>aem-study.common</artifactId>
+    <name>AEM Study - Common</name>
+    <description>Common bundle for AEM Study</description>
     <build>
         <plugins>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.felix</groupId>-->
+<!--                <artifactId>maven-bundle-plugin</artifactId>-->
+<!--                <extensions>true</extensions>-->
+<!--                <configuration>-->
+<!--                    <instructions>-->
+<!--                        <Export-Package>com.aem.study.common.servicelayer.*</Export-Package>-->
+<!--                        <Private-Package>com.aem.study.common.servicelayer.*</Private-Package>-->
+<!--                        <Bundle-Activator>com.aem.study.common.servicelayer</Bundle-Activator>-->
+<!--                    </instructions>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+
             <plugin>
                 <groupId>org.apache.sling</groupId>
                 <artifactId>sling-maven-plugin</artifactId>
@@ -43,10 +56,9 @@
                         </goals>
                         <configuration>
                             <bnd><![CDATA[
-Bundle-Category: Study-components
--exportcontents: ${packages;VERSIONED}
-Sling-Model-Packages: com.aem.study.core.models
--snapshot: ${tstamp;yyyyMMddHHmmssSSS}
+Bundle-Category: com.aem.study
+ -exportcontents: ${packages}
+ -snapshot: ${tstamp;yyyyMMddHHmmssSSS}
 Bundle-DocURL:
                                 ]]></bnd>
                         </configuration>
@@ -85,10 +97,6 @@ Bundle-DocURL:
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>com.aem.study</groupId>
-            <artifactId>aem-study.common</artifactId>
-        </dependency>
         <!-- OSGi Dependencies -->
         <dependency>
             <groupId>org.osgi</groupId>
@@ -178,12 +186,6 @@ Bundle-DocURL:
         <dependency>
             <groupId>uk.org.lidalia</groupId>
             <artifactId>slf4j-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.aem.study</groupId>
-            <artifactId>aem-study.common</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

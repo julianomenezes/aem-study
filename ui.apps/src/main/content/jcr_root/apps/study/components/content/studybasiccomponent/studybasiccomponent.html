@@ -1,0 +1,86 @@
+<!--/*
+    Copyright 2015 Adobe Systems Incorporated
+  
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+  
+        http://www.apache.org/licenses/LICENSE-2.0
+  
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/-->
+
+<div>
+    <p>Page title: ${PageProperties.jcr:title} </p>
+    <p>Resource type ${PageProperties.sling:resourceType} </p>
+    <p>Last Modified ${PageProperties.jcr:lastModified} </p>
+    <p>Page social media: ${PageProperties.socialMedia} </p>
+
+    <p><b>Parent Page</b></p>
+    <p>Parent Page title: ${inheritedPageProperties.jcr:title} </p>
+    <p>Parent Page social media: ${inheritedPageProperties.socialMedia} </p>
+
+
+    <p><b>Proprieties Componente </b></p>
+    <p>Global proprieties do componente properties ${properties.text} </p>
+
+
+    <p><b>List inheritedPageProperties</b></p>
+    <sly data-sly-list="${inheritedPageProperties}">
+        <sly data-sly-test="${itemList.first}">
+            Primeiro elemento:
+        </sly>
+        <p>Item> ${item}</p>
+        <p>Item Index ${itemList.index}</p>
+        <p>Item middle ${itemList.middle}</p>
+        <p>Item odd ${itemList.odd}</p>
+        <p>Item even ${itemList.even}</p>
+
+        <sly data-sly-test="${itemList.last}">
+            <p>Total Itens ${itemList.count}</p>
+        </sly>
+    </sly>
+
+    <p>Component Group: ${component.componentGroup} </p>
+    <p>Design CSS PATH: ${currentDesign.cssPath} </p>
+    <p>Current Page title: ${currentPage.title} </p>
+    <p>Request: ${request.serverName} </p>
+    <p>rRsource Path: ${resource.path} </p>
+    <p>rRsource Name: ${resource.name} </p>
+
+    <p>Resource Design cssPath : ${resourceDesign.cssPath} </p>
+    <p>Resource Page title : ${resourcePage.title} </p>
+
+    <p>Wcmmode isPreview: ${wcmmode.isPreview} </p>
+    <p>Wcmmode isAnalytics: ${wcmmode.isAnalytics} </p>
+    <p>Wcmmode isDesign: ${wcmmode.isDesign} </p>
+    <p>Wcmmode isDisabled: ${wcmmode.isDisabled} </p>
+
+    <p>Wcmmode isEdit: ${wcmmode.isEdit} </p>
+    <p>Wcmmode isPreview: ${wcmmode.isPreview} </p>
+    <p>Wcmmode isReadOnly: ${wcmmode.isReadOnly} </p>
+    <p>Wcmmode toString: ${wcmmode.toString} </p>
+
+    <h1>Repeat</h1>
+    <ul data-sly-repeat="${ currentPage.listChildren }">
+        <li>  ${item.name} </li>
+    </ul>
+
+    <br>
+    <br>
+
+    <h1>List</h1>
+    <ul data-sly-list="${ currentPage.listChildren }">
+        <li>  ${item.name} </li>
+    </ul>
+
+
+    <div data-sly-element="${properties.titleLevel @context='elementName'}">Element text</div>
+
+
+</div>
+

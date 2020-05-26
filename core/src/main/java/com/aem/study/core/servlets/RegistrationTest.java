@@ -15,13 +15,13 @@
  */
 package com.aem.study.core.servlets;
 
-import com.day.cq.commons.jcr.JcrConstants;
 import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.SlingHttpServletResponse;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.api.servlets.HttpConstants;
 import org.apache.sling.api.servlets.SlingAllMethodsServlet;
 import org.apache.sling.api.servlets.SlingSafeMethodsServlet;
+import org.osgi.framework.Constants;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.propertytypes.ServiceDescription;
 
@@ -43,26 +43,23 @@ import java.io.IOException;
            })*/
 
 
-@Component(service=Servlet.class,
-        property={
-                "sling.servlet.methods=" + HttpConstants.METHOD_GET,
-                "sling.servlet.resourceSuperType=" + "study/components/structure/page",
-                "sling.servlet.resourceTypes="+ "study/components/structure/page-test",
-                "sling.servlet.paths.strict="+"true",
-                "sling.servlet.extensions=" + "txt",
-                "sling.servlet.selectors="+ "tab"
-        })
+@Component(service = Servlet.class, property = {
+        Constants.SERVICE_DESCRIPTION + "=Registered By Path Servlet",
+        "sling.servlet.methods=" + HttpConstants.METHOD_GET,
+        "sling.servlet.paths=" + "/bin/registeredbypathdemo",
+        "sling.servlet.extensions=" + "html"
+})
 
 @ServiceDescription("Simple Demo Servlet")
-public class SimpleServlet extends SlingAllMethodsServlet {
+public class RegistrationTest extends SlingSafeMethodsServlet {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1000L;
 
     @Override
     protected void doGet(final SlingHttpServletRequest req,
             final SlingHttpServletResponse resp) throws ServletException, IOException {
         final Resource resource = req.getResource();
         resp.setContentType("text/plain");
-        resp.getWriter().write("Type convencional Title = " + resource.getValueMap().get(JcrConstants.JCR_TITLE));
+        resp.getWriter().write("registeredbypathdemo>>>");
     }
 }
